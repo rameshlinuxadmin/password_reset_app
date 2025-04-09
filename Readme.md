@@ -13,6 +13,7 @@ It provides functionality for users to request a password reset and receive an e
 
 - Python 3.x
 - Flask
+- cryptography 
 - An SMTP server for sending emails
 
 ## Installation
