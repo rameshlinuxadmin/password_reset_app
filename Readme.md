@@ -13,6 +13,7 @@ It provides functionality for users to request a password reset and receive an e
 
 - Python 3.x
 - Flask
+- cryptography 
 - An SMTP server for sending emails
 
 ## Installation
@@ -42,18 +43,16 @@ It provides functionality for users to request a password reset and receive an e
    Create a `.env` file in the project root directory and add the following configurations:
 
    ```ini
-   MAIL_SERVER=smtp.example.com
-   MAIL_PORT=587
-   MAIL_USERNAME=your_email@example.com
-   MAIL_PASSWORD=your_email_password
-   SECRET_KEY=your_secret_key
+   smtp_server=smtp.example.com
+   smtp_port=587
+   smtp_user=your_email@example.com
+   smtp_password=your_app_password
    ```
 
-   - `MAIL_SERVER`: Your SMTP server address
-   - `MAIL_PORT`: SMTP server port (e.g., 587 for TLS, 465 for SSL)
-   - `MAIL_USERNAME`: Your email address used to send emails
-   - `MAIL_PASSWORD`: Password for the email account
-   - `SECRET_KEY`: A secret key for Flask session management
+   - `smtp_server`: Your SMTP server address
+   - `smtp_port`: SMTP server port (e.g., 587 for TLS, 465 for SSL)
+   - `smtp_user`: Your email address used to send emails
+   - `smtp_password`: Password for the email account
 
 2. **Configure email templates:**
 
