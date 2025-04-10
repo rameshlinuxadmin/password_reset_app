@@ -3,14 +3,13 @@ from email.message import EmailMessage
 from cryptography.fernet import Fernet
 import json
 
-
 file =  open(".\config.json")
 config = json.load(file) 
 
 def mail(sender, subject, body):
-    smtp_server = "smtp.gmail.com"
+    smtp_server = "<smtp server>"
     smtp_port = 587
-    smtp_user = "<Mail ID>"
+    smtp_user = "<Sender Mail ID>"
     smtp_password = "<App Password>"
 
     msg = EmailMessage()
@@ -36,11 +35,16 @@ def passwd_encrpt(passwd):
     return encrypted_passwd.decode() 
 
 username = config["username"]
-servername = config["servername"]
+servername = config["servername"].split()
 incident = config["incident"]
 password = passwd_encrpt(config["password"])
 subject = f"{incident}: Password reset request "
-sender = "<Recipient Mail ID>"
+sender = "<Sender Mail ID>"
 
-body = f"{username} {servername} {password}"
-mail(sender, subject, body)
+passwd_encrpted  = []
+for i in servername:
+    body_m = f"{username} {i} {password}"
+    passwd_encrpted.append(body_m)
+
+content = "\n".join(passwd_encrpted)
+mail(sender, subject, content)
